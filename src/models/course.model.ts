@@ -16,13 +16,13 @@ export interface courseAttributes {
 }
 
 export class course extends Model<courseAttributes> {
+    static modelTableName = "courses";
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models: any) {
-        // console.log("came here");
         // define association here
         course.hasMany(models, { foreignKey: 'course_id', as: 'courseModules' });
     }
@@ -78,10 +78,9 @@ course.init(
     },
     {
         sequelize: db,
-        tableName: 'courses',
+        tableName: course.modelTableName,
         timestamps: true,
         updatedAt: 'updated_at',
         createdAt: 'created_at',
     }
 );
-//course.associate(course_module);

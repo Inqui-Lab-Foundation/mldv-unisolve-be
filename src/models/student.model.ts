@@ -1,13 +1,10 @@
-import { DataTypes, Model, Attributes, InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize';
+import { DataTypes, Model, InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize';
 import bcrypt from 'bcrypt';
 import { constents } from '../configs/constents.config';
 import db from '../utils/dbconnection.util';
 import { notification } from './notification.model';
 import { baseConfig } from '../configs/base.config';
 import { user } from './user.model';
-import { admin } from './admin.model';
-import { mentor } from './mentor.model';
-import { team } from './team.model';
 
 export class student extends Model<InferAttributes<student>, InferCreationAttributes<student>> {
     declare student_id: CreationOptional<number>;
@@ -26,6 +23,7 @@ export class student extends Model<InferAttributes<student>, InferCreationAttrib
     declare state: string;
     declare country: string;
     declare badges: string;
+    declare certificate: number;
     declare status: Enumerator;
     declare created_by: number;
     declare created_at: Date;
@@ -106,8 +104,8 @@ student.init(
             type: DataTypes.ENUM(...Object.values(constents.common_status_flags.list)),
             defaultValue: constents.common_status_flags.default
         },
-        created_by: {
-            type: DataTypes.INTEGER,
+        certificate: {
+            type: DataTypes.DATE,
             allowNull: true,
             defaultValue: null
         },
@@ -115,6 +113,11 @@ student.init(
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
+        },
+        created_by: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: null
         },
         updated_by: {
             type: DataTypes.INTEGER,

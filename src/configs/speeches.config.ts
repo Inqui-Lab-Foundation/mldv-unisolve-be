@@ -24,10 +24,12 @@ export const speeches = {
     DATA_NOT_FOUND: "Data not found",
     UPLOAD_FAILD: "File upload failed",
     MENTOR_EXISTS: "Email ID already exists",
+    MENTOR_NOT_EXISTS: "Mentor not found",
+    AWSMESSAGEID: "Service not used, updating organization code as password",
     MOBILE_EXISTS: "Mobile Number already exists",
     STUDENT_EXISTS: "Student already exists",
     ADMIN_EXISTS: "Admin already exists",
-    EVALUATER_EXISTS: "Evaluater already exists",
+    EVALUATOR_EXISTS: "Evaluator already exists",
     USER_NOT_FOUND: "User not found",
     USER_REG_STATUS: "User blocked",
     USER_PASSWORD: "User pasword doesn't match",
@@ -39,9 +41,10 @@ export const speeches = {
     USER_LOCKED: "User is ditected as locked",
     USER_INACTIVE: "User is ditected as inactive",
     USER_ALREADY_EXISTED: "User already existed with the Email and Phone Number.",
+    USER_FULLNAME_EXISTED: "Student full name already existed",
     USER_REGISTERED_SUCCESSFULLY: "User registered successfully",
     USER_LOGIN_SUCCESS: "Login Successful",
-    USER_BADGES_LINKED:"Badge added to user successfully",
+    USER_BADGES_LINKED: "Badge added to user successfully",
     LOGOUT_SUCCESS: "Logout Successful",
     USER_EMAIL_REQUIRED: "Email is required, it should not be empty.",
     USER_EMAIL_INVALID: "Email is invalid, it should be a valid email.",
@@ -55,7 +58,7 @@ export const speeches = {
     TEAM_NAME_REQUIRED: "Team name is required, it should not be empty.",
     TEAM_NAME_ID: "Team ID is required, it should not be empty.",
     TEAM_NOT_FOUND: "Team not found, check the teamID.",
-
+    TEAM_MAX_MEMBES_EXCEEDED: `Team can have at max ${"" + constents.TEAMS_MAX_STUDENTS_ALLOWED} members`,
     //quiz submit response keys
     QUIZ_ID_REQUIRED: "Quiz ID is required, it should not be empty.",
     CHALLENGE_ID_REQUIRED: "Challenge ID is required, it should not be empty.",
@@ -84,7 +87,14 @@ export const speeches = {
     NOTIFICATION_DELETED_SUCCESSFULLY: "Notification deleted successfully",
 
     COMMON_STATUS_INVALID: `Status is invalid, it should be one from ${Object.values(constents.common_status_flags.list).join(", ")}.`,
+    RATING_STATUS_INVALID: `Rating is invalid, it should be one from ${Object.values(constents.evaluator_rating_level_flags.list).join(", ")}.`,
     COMMON_STATUS_REQUIRED: `Status is required, it should be one from ${Object.values(constents.common_status_flags.list).join(", ")}.`,
+    RATING_STATUS_REQUIRED: `Rating is required, it should be one from ${Object.values(constents.common_status_flags.list).join(", ")}.`,
+    EVALUATOR_STATUS_INVALID: `Status is invalid, it should be one from ${Object.values(constents.common_status_flags.list).join(", ")}.`,
+    CERTIFICATE_INVALID: `certificate type is invalid, it should be one from ${Object.values(constents.certificate_flags.list).join(", ")}.`,
+    EVALUATOR_STATUS_REQUIRED: `Status is required, it should be one from ${Object.values(constents.common_status_flags.list).join(", ")}.`,
+    CHALLENGE_STATUS_INVALID: `Status is invalid, it should be one from ${Object.values(constents.challenges_flags.list).join(", ")}.`,
+    CHALLENGE_STATUS_REQUIRED: `Status is required, it should be one from ${Object.values(constents.challenges_flags.list).join(", ")}.`,
 
     CREATED_FILE: "successfully Created",
     FILE_EMPTY: "Unable to create a file, Please check the payload",
@@ -96,12 +106,13 @@ export const speeches = {
     CSV_SEND_ERROR: "Failed to reading the file date",
     CSV_SEND_INTERNAL_ERROR: 'Something went wrong while create contact admin',
     CSV_DATA_EXIST: 'Data existing',
+    DATA_EXIST: 'Data existed',
     FAQ_CATEGORY: "Category is required.",
     FAQ_ANSWER: "Answer is required.",
     ORG_CODE_REQUIRED: "Organization code is required.",
     ORG_CODE_NOT_EXISTS: "Organization code does not exists.",
     ORG_NAME_REQUIRED: "Organization name is required.",
-    
+
     PRINCIPAL_NAME_REQ: "principal name  is required.",
     PRINCIPAL_EMAIL_REQ: "principal email  is required.",
     PRINCIPAL_MOBILE_REQ: "principal mobile  is required.",
@@ -117,10 +128,10 @@ export const speeches = {
 
     TEACHER_OBJECT: "Teacher object required",
     STUDENT_OBJECT: "Student object required",
-    ROADMAP_FILE_CORRUPTED:"Roadmao file is corrupted, Please contact the administrator.",
-    BADGE_IDS_ARRAY_REQUIRED:"badge_ids or badge_slugs any one of these array are required",
-    VIDEO_STREAM_ID_REQUIRED:"Video stream id is required",
-    TYPE_INVALID:"Invalid Type",
-    TYPE_REQUIRED:"Type is required",
-    INVALID_DATA:"Invalid Data, please check validity of data in the payload."
+    ROADMAP_FILE_CORRUPTED: "Roadmao file is corrupted, Please contact the administrator.",
+    BADGE_IDS_ARRAY_REQUIRED: "badge_ids or badge_slugs any one of these array are required",
+    VIDEO_STREAM_ID_REQUIRED: "Video stream id is required",
+    TYPE_INVALID: "Invalid Type",
+    TYPE_REQUIRED: "Type is required",
+    INVALID_DATA: "Invalid Data, please check validity of data in the payload."
 }

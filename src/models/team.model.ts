@@ -4,8 +4,11 @@ import { teamAttributes } from '../interfaces/model.interface';
 import { constents } from '../configs/constents.config';
 import { mentor } from './mentor.model';
 import { student } from './student.model';
+import { challenge_response } from './challenge_response.model';
 
-export class team extends Model<teamAttributes> { }
+export class team extends Model<teamAttributes> {
+    static modelTableName="teams";
+}
 
 team.init(
     {
@@ -50,7 +53,7 @@ team.init(
     },
     {
         sequelize: db,
-        tableName: 'teams',
+        tableName: team.modelTableName,
         timestamps: true,
         updatedAt: 'updated_at',
         createdAt: 'created_at',
@@ -61,5 +64,5 @@ student.belongsTo(team, { foreignKey: 'team_id', constraints: false });
 team.hasMany(student, { foreignKey: 'team_id', constraints: false });
 team.belongsTo(mentor, { foreignKey: 'mentor_id', constraints: false });
 mentor.hasOne(team, { foreignKey: 'mentor_id', constraints: false });
-// mentor.belongsTo(organization, { targetKey: 'organization_code',foreignKey: 'organization_code', constraints: false });
-// organization.hasOne(mentor, { sourceKey:'organization_code',foreignKey: 'organization_code', constraints: false});
+challenge_response.belongsTo(team, { foreignKey: 'team_id', constraints: false });
+team.hasMany(challenge_response, { foreignKey: 'team_id', constraints: false });
