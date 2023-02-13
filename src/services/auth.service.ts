@@ -399,7 +399,7 @@ export default class authService {
                     Data: 'UNISOLVE OTP SERVICES'
                 }
             },
-            Source: "unisolvebhutan@inqui-lab.org", /* required */
+            Source: "unisolveinfo@inqui-lab.org", /* required */
             ReplyToAddresses: [],
         };
         try {
