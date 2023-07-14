@@ -215,7 +215,7 @@ export default class WorksheetController extends BaseController {
                 }
                 file.originalFilename = `${file_name_prefix}/${filename}/${file.originalFilename}`;
                 let params = {
-                    Bucket: 'unisole-assets',
+                    Bucket: 'unisolve2.0-assets',
                     Key: file.originalFilename,
                     Body: readFile
                 };
