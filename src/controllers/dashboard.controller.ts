@@ -826,7 +826,7 @@ export default class DashboardController extends BaseController {
             FROM
                 user_topic_progress
             GROUP BY user_id
-            HAVING COUNT(*) >= 34) AS temp ON st.user_id = temp.user_id WHERE og.status='ACTIVE';`,{ type: QueryTypes.SELECT });
+            HAVING COUNT(*) >= 35) AS temp ON st.user_id = temp.user_id WHERE og.status='ACTIVE';`,{ type: QueryTypes.SELECT });
             const started = await db.query(`SELECT 
             count(st.student_id) as studentCoursestartted
         FROM
@@ -963,8 +963,8 @@ export default class DashboardController extends BaseController {
                 user_id, COUNT(*) AS cou
             FROM
                 unisolve_db.mentor_topic_progress
-            GROUP BY user_id having count(*)>=8) AS t ON mn.user_id = t.user_id ) AS c ON c.organization_code = og.organization_code WHERE og.status='ACTIVE'
-        group by organization_id having cou>=8) as final`,{ type: QueryTypes.SELECT })
+            GROUP BY user_id having count(*)>=9) AS t ON mn.user_id = t.user_id ) AS c ON c.organization_code = og.organization_code WHERE og.status='ACTIVE'
+        group by organization_id having cou>=9) as final`,{ type: QueryTypes.SELECT })
             res.status(200).send(dispatcher(res,result,'done'))
         }
         catch(err){

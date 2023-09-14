@@ -28,6 +28,7 @@ export const wildcardRoutes = [
     "/api/v1/dashboard/refreshMapStats",
     "/api/v1/dashboard/loggedInUserCount",
     "/api/v1/reports/userTopicProgress",
+    "/api/v1/organizations/login",
     "/assets/*",
     "/posters/*",
     "/images/*",
