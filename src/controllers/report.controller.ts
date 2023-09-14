@@ -1013,7 +1013,7 @@ export default class ReportController extends BaseController {
                     'Not Started') AS 'Pre Survey Status',
             (SELECT 
                     CASE
-                            WHEN COUNT(mentor_course_topic_id) >= 8 THEN 'Completed'
+                            WHEN COUNT(mentor_course_topic_id) >= 9 THEN 'Completed'
                             WHEN COUNT(mentor_course_topic_id) = 0 THEN 'Not Started'
                             ELSE 'In Progress'
                         END
@@ -1067,7 +1067,7 @@ export default class ReportController extends BaseController {
                     WHERE
                         mentor_id = mn.mentor_id
                     GROUP BY student_id
-                    HAVING COUNT(*) >= 34) AS total) AS countop,
+                    HAVING COUNT(*) >= 35) AS total) AS countop,
             (SELECT 
                     COUNT(*)
                 FROM
@@ -1080,7 +1080,7 @@ export default class ReportController extends BaseController {
                     WHERE
                         mentor_id = mn.mentor_id
                     GROUP BY student_id
-                    HAVING COUNT(*) > 0 && COUNT(*) < 34) AS total) AS courseinprogess,
+                    HAVING COUNT(*) > 0 && COUNT(*) < 35) AS total) AS courseinprogess,
             (SELECT 
                     COUNT(*)
                 FROM
@@ -1178,8 +1178,8 @@ export default class ReportController extends BaseController {
                 user_id, COUNT(*) AS cou
             FROM
                 unisolve_db.mentor_topic_progress
-            GROUP BY user_id having count(*)<8) AS t ON mn.user_id = t.user_id ) AS c ON c.organization_code = og.organization_code WHERE og.status='ACTIVE' ${wherefilter}
-        group by organization_id having cou<8) as final group by district;`, { type: QueryTypes.SELECT });
+            GROUP BY user_id having count(*)<9) AS t ON mn.user_id = t.user_id ) AS c ON c.organization_code = og.organization_code WHERE og.status='ACTIVE' ${wherefilter}
+        group by organization_id having cou<9) as final group by district;`, { type: QueryTypes.SELECT });
         const courseCompleted= await db.query(`select district,count(*) as courseCMP from (SELECT 
             district,cou
         FROM
@@ -1193,8 +1193,8 @@ export default class ReportController extends BaseController {
                 user_id, COUNT(*) AS cou
             FROM
                 unisolve_db.mentor_topic_progress
-            GROUP BY user_id having count(*)>=8) AS t ON mn.user_id = t.user_id ) AS c ON c.organization_code = og.organization_code WHERE og.status='ACTIVE' ${wherefilter}
-        group by organization_id having cou>=8) as final group by district`, { type: QueryTypes.SELECT });
+            GROUP BY user_id having count(*)>=9) AS t ON mn.user_id = t.user_id ) AS c ON c.organization_code = og.organization_code WHERE og.status='ACTIVE' ${wherefilter}
+        group by organization_id having cou>=9) as final group by district`, { type: QueryTypes.SELECT });
             data['summary'] = summary;
             data['teamCount'] = teamCount;
             data['studentCountDetails'] = studentCountDetails;
@@ -1257,7 +1257,7 @@ export default class ReportController extends BaseController {
             FROM
                 user_topic_progress
             GROUP BY user_id
-            HAVING COUNT(*) >= 34) AS temp ON st.user_id = temp.user_id WHERE og.status='ACTIVE' ${wherefilter} group by og.district`, { type: QueryTypes.SELECT });
+            HAVING COUNT(*) >= 35) AS temp ON st.user_id = temp.user_id WHERE og.status='ACTIVE' ${wherefilter} group by og.district`, { type: QueryTypes.SELECT });
             const courseINprogesss = await db.query(`SELECT 
             og.district,count(st.student_id) as studentCourseIN
         FROM
@@ -1274,7 +1274,7 @@ export default class ReportController extends BaseController {
             FROM
                 user_topic_progress
             GROUP BY user_id
-            HAVING COUNT(*) < 34) AS temp ON st.user_id = temp.user_id WHERE og.status='ACTIVE' ${wherefilter} group by og.district`, { type: QueryTypes.SELECT });
+            HAVING COUNT(*) < 35) AS temp ON st.user_id = temp.user_id WHERE og.status='ACTIVE' ${wherefilter} group by og.district`, { type: QueryTypes.SELECT });
             const submittedCount = await db.query(`SELECT 
             og.district,count(te.team_id) as submittedCount
         FROM
